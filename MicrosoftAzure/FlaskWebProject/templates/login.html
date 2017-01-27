@@ -1,0 +1,36 @@
+{% extends "login_layout.html" %}
+
+{% block content %}
+
+<link rel="stylesheet" href="/static/style.css" type="text/css">
+
+
+<form action="/login" method="POST">
+	<div class="login">
+		<div class="login-screen">
+			<div class="app-title">
+				<center><h1>Login</h1></center>
+			</div>
+ 
+			<div class="login-form">
+				<div class="control-group">
+				<center><input type="text" class="login-field" value="" placeholder="username" name="username"></center>
+				<label class="login-field-icon fui-user" for="login-name"></label>
+				</div>
+ 
+				<div class="control-group">
+				<center><input type="password" class="login-field" value="" placeholder="password" name="password"></center>
+				<label class="login-field-icon fui-lock" for="login-pass"></label>
+				</div>
+                <br>
+                <center><input type="submit" value="Log In" class="_42ft _4jy0 _52e0 _4jy6 _4jy1 selected _51sy" ></center>
+			    <br>
+				<div>
+					<p>{{message}}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+
+{% endblock %}

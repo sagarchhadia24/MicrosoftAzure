@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<html lang="en">
+<body>
+    <form id="sort_id" action="/sortmydocuments" method='POST'>
+        <select name="sortCat">
+            <option value="Date">TimeStamp</option>
+            <option value="Priority">Priority</option>
+            <option value="Subject">Subject</option>
+        </select>
+        <select name="sortOrder">
+            <option value="1">Ascending</option>
+            <option value="-1">Descending</option>
+        </select>
+        <input type="submit"value="Sort" id="submit_file">
+    </form>
+    <div>
+        <p>{{Time}}</p>
+    </div>
+    {%  for Data in output %}
+    <table border="1">
+        <tr>
+            <td><img src={{ Data["ImageData"] }}></td>
+        <tr>
+        <tr>
+            <td>Document Data  : {{ Data["DocData"] }}</td>
+        <tr>
+        <tr>
+            <td>Subject     : {{ Data["Subject"] }}</td>
+        <tr>
+        <tr>
+            <td>Priority    : {{ Data["Priority"] }}</td>
+        <tr>
+        <tr>
+            <td>User Name   : {{ Data["User Name"] }}</td>
+        <tr>
+        <tr>
+            <td>File Name   : {{ Data["File Name"] }}</td>
+        <tr>
+        <tr>
+            <td>TimeStamp   : {{ Data["TimeStamp"] }}</td>
+        <tr>
+    </table>
+        <form id="/upload" action="../deletepicture" method="post">
+            <input type="hidden" name= "username" value={{ Data["User Name"] }}>
+            <input type="hidden" name= "filename" value={{ Data["File Name"] }}>
+            <input type="submit" value="Delete" id="submit_file">
+        </form>
+        <form id="/upload" action="../updateSubject" method="post">
+            <input type="hidden" name= "username" value={{ Data["User Name"] }}>
+            <input type="hidden" name= "filename" value={{ Data["File Name"] }}>
+            <input type="text" value=" " name="updatesubject">
+            <input type="submit" value="UpdateSubject" id="submit_file">
+        </form>
+        <form id="/upload" action="../updatePriority" method="post">
+            <input type="hidden" name= "username" value={{ Data["User Name"] }}>
+            <input type="hidden" name= "filename" value={{ Data["File Name"] }}>
+            <input type="text" value=" " name="updatepriority">
+            <input type="submit" value="UpdatePriority" id="submit_file">
+        </form>
+    <br>
+    <br>
+    <br>
+    {% endfor %}
+</body>
+</html>
+
+
+{% endblock %}
