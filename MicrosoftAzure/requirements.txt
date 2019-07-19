@@ -1,3 +1,0 @@
-Flask<1
-Flask-PyMongo==0.4.1
-PyMongo==3.2.2
